@@ -23,6 +23,7 @@ from typing import Any
 
 from fastapi import FastAPI, HTTPException, WebSocket, WebSocketDisconnect
 from fastapi.responses import HTMLResponse, JSONResponse
+from pydantic import BaseModel
 
 from deskbot.models import (
     BaselineScores,
@@ -310,10 +311,14 @@ async def websocket_endpoint(websocket: WebSocket) -> None:
     await _ws_session(websocket)
 
 
+class _ResetBody(BaseModel):
+    task: str = "easy"
+    seed: int = 42
+
 @app.post("/reset", response_model=DeskObservation)
-def reset(body: dict) -> DeskObservation:
-    task = body.get("task", "easy")
-    seed = int(body.get("seed", 42))
+def reset(body: _ResetBody = _ResetBody()) -> DeskObservation:
+    task = body.task
+    seed = body.seed
     if task not in ("easy", "medium", "hard"):
         raise HTTPException(status_code=422, detail=f"Unknown task: {task!r}")
     try:
