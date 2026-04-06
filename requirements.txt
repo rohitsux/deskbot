@@ -1,0 +1,23 @@
+# Core simulation + server
+mujoco>=3.1.0          # MuJoCo physics — CPU-only, convex contact solver
+pinocchio>=3.0.0       # Rigid-body kinematics (Pink dependency)
+git+https://github.com/stephane-caron/pink.git  # QP IK with joint limits + collision avoidance
+quadprog>=0.1.11       # QP solver backend for Pink
+fastapi==0.111.0
+uvicorn[standard]==0.30.1
+pydantic==2.7.1
+pyyaml==6.0.1
+websockets>=12.0
+
+# Baseline agent (OpenAI API — hackathon requirement)
+openai>=1.30.0
+
+# RL training only — exclude from Docker with requirements-server.txt
+stable-baselines3==2.3.2
+gymnasium==0.29.1
+torch==2.3.0+cpu   # CPU-only wheel — no CUDA on HF Spaces free tier
+numpy==1.26.4
+
+# Testing
+pytest==8.2.0
+httpx==0.27.0      # for async test client with FastAPI

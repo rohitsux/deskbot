@@ -1,0 +1,21 @@
+name: easy
+display_name: "Simple Arrangement"
+max_steps: 50
+num_objects: 5
+object_ids:
+  - cube_plastic
+  - mug_ceramic
+  - book_paper
+  - bottle_plastic
+  - stapler_metal
+targets:
+  cube_plastic:   [0.45, 0.30, 0.78]
+  mug_ceramic:    [0.10, 0.30, 0.78]
+  book_paper:     [0.45, 0.10, 0.78]
+  bottle_plastic: [0.10, 0.10, 0.78]
+  stapler_metal:  [0.28, 0.20, 0.78]
+reward_weights:
+  cleanliness: 1.0
+  order: 0.0
+  safety: 0.0
+placement_threshold: 0.05  # metres — object counts as "placed" if within this distance

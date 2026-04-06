@@ -1,0 +1,29 @@
+name: deskbot
+version: "0.1.0"
+description: >
+  A simulated dual-arm desktop robot (Qubit SO-100 inspired) learns to clean and organise
+  a cluttered desk. Three difficulty levels test increasingly complex manipulation skills:
+  simple arrangement, sequenced unblocking, and constraint-aware placement.
+entrypoint: deskbot.server:app
+type: http
+spec_version: "1.0"
+
+tasks:
+  - id: easy
+    name: "Simple Arrangement"
+    description: >
+      5 objects on a cluttered desk. Place each at its designated target position.
+      Dense reward for every cm closer to target. Max 50 steps.
+
+  - id: medium
+    name: "Sequenced Cleaning"
+    description: >
+      8 objects with blocking dependencies. Some objects cannot be reached until
+      others are moved first. Order of operations matters. Max 80 steps.
+
+  - id: hard
+    name: "Collision-Aware Arrangement"
+    description: >
+      12 objects with material constraints. Fragile objects break if dropped.
+      Glass cannot touch metal. Heavy items cannot stack on fragile ones.
+      Destroying a fragile object ends the episode with zero reward. Max 120 steps.
