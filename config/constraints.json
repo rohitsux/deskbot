@@ -1,0 +1,39 @@
+{
+  "forbidden_contact_pairs": [
+    {
+      "a": "glass",
+      "b": "metal",
+      "penalty": 0.3,
+      "reason": "glass shatters on metal"
+    },
+    {
+      "a": "heavy",
+      "b": "fragile",
+      "penalty": 1.0,
+      "reason": "heavy items destroy fragile ones"
+    },
+    {
+      "a": "glass",
+      "b": "glass",
+      "penalty": 0.4,
+      "reason": "glass chips when struck against glass"
+    },
+    {
+      "a": "metal",
+      "b": "ceramic",
+      "penalty": 0.2,
+      "reason": "metal scratches ceramic glaze"
+    },
+    {
+      "a": "glass",
+      "b": "ceramic",
+      "penalty": 0.25,
+      "reason": "glass may chip on hard ceramic"
+    }
+  ],
+  "fragile_drop_height_threshold": 0.05,
+  "max_stack_weight": 0.5,
+  "heavy_mass_threshold": 0.4,
+  "gripper_force_limit": 10.0,
+  "velocity_violation_threshold": 2.0
+}
